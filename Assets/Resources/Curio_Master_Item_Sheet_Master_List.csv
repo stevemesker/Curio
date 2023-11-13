@@ -1,0 +1,8 @@
+Item ID#,Item Name,Base Cost,Item Type,Max Stack Size,Art File Name,Notes
+0,Magic Dust,1,Item,3,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,Big Ol pile of dust with some magical properties
+1,Log Pile,2,Item,6,Assets\Art\ShopAssets\Items\TestCube.prefab,Useful for building materials
+2,Iron Ore,10,Item,3,Assets\Art\ShopAssets\Items\TestCube.prefab,That's one shiny rock!
+3,magic ball,20,Item,1,Assets\Art\ShopAssets\Items\TestCube.prefab,It's spherical! spherical!
+4,Construction Wall,10,Item,0,Assets\Art\ShopAssets\Items\TestCube.prefab,Foundation for custom walls
+5,Wood Village Wall,0,Item,0,Assets\Art\ShopAssets\Items\TestCube.prefab,Very earthy
+6,Wand of Freezing,50,MagicItem,0,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,casts the freezing spell
