@@ -14,6 +14,7 @@ public class WallCarryObject : MonoBehaviour, iPickUp
 
     //private variables
     private int wallLength; //tells the wall how long it's going to be when placed and while updating the hologram
+    public GameObject currentWall; //wall being instantiated
 
     public void Awake()
     {
@@ -22,38 +23,48 @@ public class WallCarryObject : MonoBehaviour, iPickUp
 
     public void UpdateWallLength(Vector3 originLocation, Vector3 dropLocation)
     {
+        Debug.LogError(Mathf.Abs(dropLocation.x - originLocation.x) + " | " + Mathf.Abs(dropLocation.z - originLocation.z));
         //used to figure out the wall length giving the starting point of originLocation and ending at dropLocation
-
         int temp = 1; //used for reversing the selection
 
         primaryCoordinates = new List<Vector3>();
         secondaryCoordinates = new List<Vector3>();
+        if (wallLength >= 2 && currentWall == null) currentWall = Instantiate(wall, Player.player.GetComponent<PlayerMovement>().targeter.transform.position, Quaternion.identity);
+        
+
 
         if (Mathf.Abs(dropLocation.x - originLocation.x) > Mathf.Abs(dropLocation.z - originLocation.z))
         {
             print("Following the X");
             wallLength = (int) Mathf.Abs(dropLocation.x - originLocation.x);
             if (dropLocation.x < originLocation.x)temp = -1;
-            for (int i = 0; i < wallLength; i++)
+            for (int i = 0; i < wallLength+1; i++)
             {
                 primaryCoordinates.Add(new Vector3(i * temp, 0, 0));
                 secondaryCoordinates.Add(new Vector3(i * temp, 0, 1));
                 secondaryCoordinates.Add(new Vector3(i * temp, 0, -1));
             }
+            if (currentWall != null) currentWall.transform.localRotation = Quaternion.Euler(0, 90*temp, 0);
         }
         else
         {
             print("Following the Z");
             wallLength = (int)Mathf.Abs(dropLocation.z - originLocation.z);
             if (dropLocation.z < originLocation.z) temp = -1;
-            for (int i = 0; i < wallLength; i++)
+            for (int i = 0; i < wallLength+1; i++)
             {
                 primaryCoordinates.Add(new Vector3(0, 0, i * temp));
                 secondaryCoordinates.Add(new Vector3(1, 0, i * temp));
                 secondaryCoordinates.Add(new Vector3(-1, 0, i * temp));
             }
+            if (currentWall != null && dropLocation.z < originLocation.z) currentWall.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            else if (currentWall != null && dropLocation.z >= originLocation.z) currentWall.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
-
+        if (currentWall != null)
+        {
+            currentWall.GetComponent<WallObject>().wallSize = wallLength;
+            currentWall.GetComponent<WallObject>().UpdateWall(false);
+        }
 
     }
 
