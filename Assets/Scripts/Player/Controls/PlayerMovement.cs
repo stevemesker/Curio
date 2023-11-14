@@ -237,6 +237,7 @@ public class PlayerMovement : MonoBehaviour
         GameObject grabbed = itemFinder();
         if (grabbed && grabbed.transform.GetComponent<iPickUp>() != null)
         {
+            //if (Player.player.shop != null) UpdatePlacer(Player.player.shop.transform.InverseTransformPoint(targeter.transform.position));
             //Debug.Log("now picking up " + grabbed);
             Player.player.PickUpObject(grabbed.GetComponent<iPickUp>().pickup(gameObject));
             if (Player.player.shop != null) UpdatePlacer(placerTargetLocation);

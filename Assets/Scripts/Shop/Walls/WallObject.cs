@@ -27,6 +27,7 @@ public class WallObject : MonoBehaviour
 
     //private variables
     int pillarCount; //stores what the previous wall size was so we don't have to reset every time it updates
+
     
 
     [Button("Update Wall")]
@@ -54,6 +55,7 @@ public class WallObject : MonoBehaviour
         }
         
         temp.transform.localScale = new Vector3(temp.transform.localScale.x, temp.transform.localScale.y, wallSize);
+        temp.GetComponent<Collider>().enabled = true;
         ///end of temporary wall stuff
 
         int counter = 1;
@@ -341,6 +343,7 @@ public class WallObject : MonoBehaviour
             temp.transform.localPosition = Vector3.zero;
             temp.transform.localRotation = Quaternion.Euler(Vector3.zero);
             temp.name = "Pillar Spawned " + (pillarContainer.transform.childCount -1);
+            temp.GetComponent<Collider>().enabled = true;
         }
         //make starting pillar for next group
         temp = Instantiate(PillarPrefab);
@@ -350,6 +353,7 @@ public class WallObject : MonoBehaviour
         temp.transform.localPosition = Vector3.zero;
         temp.transform.localRotation = Quaternion.Euler(Vector3.zero);
         temp.name = "Pillar Spawned " + (pillarContainer.transform.childCount - 1);
+        temp.GetComponent<Collider>().enabled = true;
     }
 
     void SetPillarPosition (int positionOne, int positionTwo)
@@ -401,6 +405,21 @@ public class WallObject : MonoBehaviour
             }
         }
         
+    }
+
+    public void RemoveWall()
+    {
+        WallSequence[0].FillPillars[0].GetComponent<Collider>().enabled = false;
+        WallPrefab.GetComponent<Collider>().enabled = false; //might need to update this later
+        //function called when wall is being removed so all neighbor walls become primary walls
+        for (int i = 0; i < WallSequence.Count; i++)
+        {
+            for (int j = 0; j < WallSequence[i].WallSegmentNeighbors.Count; i++)
+            {
+                WallSequence[i].WallSegmentNeighbors[j].GetComponent<WallObject>().ResetPillars(false);
+                WallSequence[i].WallSegmentNeighbors[j].GetComponent<WallObject>().UpdateWall(true);
+            }
+        }
     }
 
     [Button("Reset Pillars")]

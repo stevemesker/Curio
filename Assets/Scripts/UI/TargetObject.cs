@@ -82,7 +82,7 @@ public class TargetObject : MonoBehaviour
         if (errors.Count != 0) 
         {
             Debug.LogWarning("Found problems with placing objects in " + errors.Count + " different spaces such as " + errors[0]);
-            return false; 
+            //return false; 
         }
         
         return true;

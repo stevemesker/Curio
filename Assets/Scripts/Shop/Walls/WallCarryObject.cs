@@ -62,6 +62,8 @@ public class WallCarryObject : MonoBehaviour, iPickUp
         }
         if (currentWall != null)
         {
+            //currentWall.GetComponent<WallObject>().defaultArt = wallArt;
+            currentWall.GetComponent<WallObject>().UpdateArt(wallArt);
             currentWall.GetComponent<WallObject>().wallSize = wallLength;
             currentWall.GetComponent<WallObject>().UpdateWall(false);
         }
@@ -92,7 +94,7 @@ public class WallCarryObject : MonoBehaviour, iPickUp
         else
         {
             Debug.Log("Placing wall...");
-            
+            currentWall.GetComponent<WallObject>().UpdateWall(true);
         }
 
         Destroy(gameObject);
