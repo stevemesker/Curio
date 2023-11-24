@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7aebcaac342523448b5a37949e9c608, type: 3}
-  m_Name: item_Magic Dust
+  m_Name: item0_Magic Dust
   m_EditorClassIdentifier: 
   name: Magic Dust
   type: 0
-  art: {fileID: 6985501456831984671, guid: c17251a9f455a9949b8adfb81d276f6d, type: 3}
+  art: {fileID: 0}
   id: 0
   baseCost: 1
   StackSize: 3

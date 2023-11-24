@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7aebcaac342523448b5a37949e9c608, type: 3}
-  m_Name: item_Construction Wall
+  m_Name: item4_Construction Wall
   m_EditorClassIdentifier: 
   name: Construction Wall
   type: 0
-  art: {fileID: 8013929056255330446, guid: 4f87c76236dc9e04cbb25571700446c1, type: 3}
+  art: {fileID: 0}
   id: 4
   baseCost: 10
   StackSize: 0

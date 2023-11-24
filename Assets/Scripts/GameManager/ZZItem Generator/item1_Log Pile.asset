@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7aebcaac342523448b5a37949e9c608, type: 3}
-  m_Name: item_Iron Ore
+  m_Name: item1_Log Pile
   m_EditorClassIdentifier: 
-  name: Iron Ore
+  name: Log Pile
   type: 0
-  art: {fileID: 8013929056255330446, guid: 4f87c76236dc9e04cbb25571700446c1, type: 3}
-  id: 2
-  baseCost: 10
-  StackSize: 3
-  Notes: "That's one shiny rock!\r"
+  art: {fileID: 0}
+  id: 1
+  baseCost: 2
+  StackSize: 6
+  Notes: "Useful for building materials\r"
