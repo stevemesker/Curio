@@ -23,13 +23,12 @@ public class WallCarryObject : MonoBehaviour, iPickUp
 
     public void UpdateWallLength(Vector3 originLocation, Vector3 dropLocation)
     {
-        Debug.LogError(Mathf.Abs(dropLocation.x - originLocation.x) + " | " + Mathf.Abs(dropLocation.z - originLocation.z));
         //used to figure out the wall length giving the starting point of originLocation and ending at dropLocation
         int temp = 1; //used for reversing the selection
 
         primaryCoordinates = new List<Vector3>();
         secondaryCoordinates = new List<Vector3>();
-        if (wallLength >= 2 && currentWall == null) currentWall = Instantiate(wall, Player.player.GetComponent<PlayerMovement>().targeter.transform.position, Quaternion.identity);
+        if (wallLength >= 2 && currentWall == null) { currentWall = Instantiate(wall, Player.player.GetComponent<PlayerMovement>().targeter.transform.position, Quaternion.identity); currentWall.GetComponent<WallObject>().renderChange("Hologram"); }
         
 
 
@@ -88,6 +87,7 @@ public class WallCarryObject : MonoBehaviour, iPickUp
             //startpos = dropLocation;
             placing = true;
             Debug.Log("initializing placement");
+            
 
             return false;
         }
@@ -95,6 +95,8 @@ public class WallCarryObject : MonoBehaviour, iPickUp
         {
             Debug.Log("Placing wall...");
             currentWall.GetComponent<WallObject>().UpdateWall(true);
+            if (GameManager.gm != null) GameManager.gm.HoloEnd(currentWall);
+            //currentWall.GetComponent<WallObject>().renderChange("Default");
         }
 
         Destroy(gameObject);
@@ -136,4 +138,8 @@ public class WallCarryObject : MonoBehaviour, iPickUp
         return gameObject;
     }
 
+    public void renderChange(string renderLayer)
+    {
+        throw new System.NotImplementedException();
+    }
 }

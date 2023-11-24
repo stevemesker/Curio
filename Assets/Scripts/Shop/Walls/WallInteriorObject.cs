@@ -52,4 +52,9 @@ public class WallInteriorObject : MonoBehaviour, iPickUp, iWall
     {
         return gameObject;
     }
+
+    public void renderChange(string renderLayer)
+    {
+        throw new System.NotImplementedException();
+    }
 }

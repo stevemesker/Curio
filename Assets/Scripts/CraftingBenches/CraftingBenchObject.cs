@@ -320,6 +320,11 @@ public class CraftingBenchObject : MonoBehaviour,iPickUp, iRotate
         return true;
     }
 
+    public void renderChange(string renderLayer)
+    {
+        throw new System.NotImplementedException();
+    }
+
     #endregion
 
 

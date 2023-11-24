@@ -74,4 +74,9 @@ public class WallComponent : MonoBehaviour, iPickUp, iWall
     {
         return topLevel;
     }
+
+    public void renderChange(string renderLayer)
+    {
+        throw new System.NotImplementedException();
+    }
 }

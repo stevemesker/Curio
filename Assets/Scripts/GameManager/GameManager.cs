@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject itemTemplate; //base game object all items use
     public GameObject uiTarget; //prefab of the ui target
     
+    
 
     private List<GameObject> prefabList; //a bunch of possible prefabs to be spawned based on the type of item being requested of the game manager
 
@@ -62,4 +63,11 @@ public class GameManager : MonoBehaviour
         GameObject temp = Instantiate(uiTarget);
         return temp;
     }
+
+    public void HoloEnd(GameObject source)
+    {
+        GetComponent<HoloManager>().enabled = true;
+        GetComponent<HoloManager>().targetObject.Add(source);
+    }
+
 }

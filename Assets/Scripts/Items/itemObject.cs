@@ -87,4 +87,9 @@ public class itemObject : MonoBehaviour, iPickUp, iStorable, iRotate
         temp.Add(Vector3.zero);
         return temp;
     }
+
+    public void renderChange(string renderLayer)
+    {
+        throw new System.NotImplementedException();
+    }
 }
