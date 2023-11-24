@@ -45,8 +45,8 @@ public class WallComponent : MonoBehaviour, iPickUp, iWall
     }
     public GameObject pickup(GameObject source)
     {
-        topLevel.GetComponent<iPickUp>().pickup(source);
-        return topLevel;
+        GameObject temp = topLevel.GetComponent<iPickUp>().pickup(source);
+        return temp;
     }
 
     public bool drop(Vector3 dropLocation, Quaternion dropRotation)
@@ -73,5 +73,10 @@ public class WallComponent : MonoBehaviour, iPickUp, iWall
     public GameObject FindWall(GameObject source)
     {
         return topLevel;
+    }
+
+    public void renderChange(string renderLayer)
+    {
+        throw new System.NotImplementedException();
     }
 }

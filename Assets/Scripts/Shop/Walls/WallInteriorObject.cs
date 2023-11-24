@@ -10,20 +10,21 @@ public class WallInteriorObject : MonoBehaviour, iPickUp, iWall
     public GameObject pickup(GameObject source)
     {
         Debug.Log("Transfering " + gameObject.name + " to the hand of " + source.name);
-        transform.parent = source.transform;
-        transform.localRotation = Quaternion.identity;
-        transform.localPosition = Vector3.zero;
-        //toggleColliders();
 
-        if (carryArt != null)
-        {
-            carryArt.SetActive(true);
-            primaryArt.SetActive(false);
-        }
-        //GetComponent<Collider>().enabled = false; we'll need to disable collider for children later
-        /*Grabbed.GetComponent<ItemGeneric>().DropListen();*/
+        ////////future stuff////////
+        //Make sure there's nothing attached to the wall
+        //
+        /////end future stuff//////
 
-        return gameObject;
+        GameObject temp = Instantiate(carryArt, transform.position, Quaternion.identity);
+        temp.GetComponent<WallCarryObject>().wallArt = gameObject.GetComponent<WallObject>().defaultArt;
+
+        //update all neighbors as primary
+        gameObject.GetComponent<WallObject>().RemoveWall();
+
+        Destroy(gameObject);
+        
+        return temp.GetComponent<iPickUp>().pickup(source);
     }
 
 
@@ -50,5 +51,10 @@ public class WallInteriorObject : MonoBehaviour, iPickUp, iWall
     public GameObject FindWall(GameObject source)
     {
         return gameObject;
+    }
+
+    public void renderChange(string renderLayer)
+    {
+        throw new System.NotImplementedException();
     }
 }

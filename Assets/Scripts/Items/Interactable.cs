@@ -30,6 +30,14 @@ public interface iPickUp
 
     //handles placing things on the grid by telling the targeter what spaces it will take up
     List<Vector3> GroupPerimiterCoordinates();
+
+    
+}
+
+public interface iHologram
+{
+    //handles changing the object into a hologram
+    void renderChange(string renderLayer);
 }
 
 public interface iGather

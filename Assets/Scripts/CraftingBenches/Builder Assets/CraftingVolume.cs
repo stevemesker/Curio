@@ -124,5 +124,10 @@ public class CraftingVolume : MonoBehaviour, iPickUp, iContainer, iInteract, iRo
         return true;
     }
 
+    public void renderChange(string renderLayer)
+    {
+        throw new System.NotImplementedException();
+    }
+
     #endregion //Interactions
 }
