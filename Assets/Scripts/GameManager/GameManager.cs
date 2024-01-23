@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
     public Item getItemID(int ID)
     {
         //returns just an item scriptable object given the ID from the master database
+        print("finding object with ID " + ID);
         if (ID <= masterItemList.itemData.Count)
         {
             return masterItemList.itemData[ID];

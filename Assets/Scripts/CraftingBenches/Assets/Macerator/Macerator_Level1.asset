@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3361c18c0e95e641970bca80509075c, type: 3}
-  m_Name: test_macerator
+  m_Name: Macerator_Level1
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -23,8 +23,8 @@ MonoBehaviour:
     SerializationNodes:
     - Name: dictRecipeList
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[Item, Assembly-CSharp],[recipeList,
-        Assembly-CSharp]], mscorlib
+      Data: 0|System.Collections.Generic.Dictionary`2[[Item, Assembly-CSharp],[System.Collections.Generic.List`1[[Recipes_SO,
+        Assembly-CSharp]], mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
       Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[Item, Assembly-CSharp]],
@@ -41,11 +41,4 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  recipes:
-  - {fileID: 11400000, guid: 2e6cab59ae70cfc4ba76703b15ef8d76, type: 2}
-  - {fileID: 11400000, guid: 3cba94e156f428e4fb644e33d26d2e2e, type: 2}
-  - {fileID: 11400000, guid: fcec95d48c7921e42b3e978aeb72e48f, type: 2}
-  - {fileID: 11400000, guid: 25b62c832f44b7f488e3710681ab4ed9, type: 2}
-  - {fileID: 11400000, guid: aa100e94ba5313e44ae2cd7a225e40f6, type: 2}
-  - {fileID: 11400000, guid: 0203860963b6e804babeca82597805c5, type: 2}
-  - {fileID: 11400000, guid: 17c45c6a13cc6fa429e519b7cb1633b6, type: 2}
+  recipes: []

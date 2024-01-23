@@ -1,8 +1,21 @@
 Item ID#,Item Name,Base Cost,Item Type,Max Stack Size,Art File Name,Notes
-0,Magic Dust,1,Item,3,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,Big Ol pile of dust with some magical properties
-1,Log Pile,2,Item,6,Assets\Art\ShopAssets\Items\TestCube.prefab,Useful for building materials
-2,Iron Ore,10,Item,3,Assets\Art\ShopAssets\Items\TestCube.prefab,That's one shiny rock!
-3,magic ball,20,Item,1,Assets\Art\ShopAssets\Items\TestCube.prefab,It's spherical! spherical!
-4,Construction Wall,10,Item,0,Assets\Art\ShopAssets\Items\TestCube.prefab,Foundation for custom walls
-5,Wood Village Wall,0,Item,0,Assets\Art\ShopAssets\Items\TestCube.prefab,Very earthy
-6,Wand of Freezing,50,MagicItem,0,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,casts the freezing spell
+0,Scrap Wood,1,Item,20,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,Junk Item for the tutorial
+1,Old Bricks,1,Item,10,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,Junk Item for the tutorial
+2,Living Wood Logs,5,Item,4,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,Basic logs for the first area
+3,Living Wood Boards,6,Item,10,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,Basic wood planks made from living wood logs
+4,Wood Pulp,1,Item,20,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,Most basic material for making simple paper
+5,Limestone,5,Item,10,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,Most basic stone used for construction materials
+6,Stone Blocks,6,Item,20,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,Basic architectual material
+7,Titan Tears,10,Item,20,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,Magical ore that is the base for almost all magical stuff
+8,Moonflower,7,Item,20,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,Flower that only spawns at night
+9,Brightbloom,7,Item,20,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,Flower that only spawns in the day
+10,Blue Dust,15,Item,20,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,Basic dust used in most magic recipes
+11,White Dust,10,Item,20,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,dust used as a component for ice magic
+12,Red Dust,10,Item,20,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,dust used as a component for fire magic
+13,Blue Bar,20,Item,10,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,Purified version of blue dust used for artifacts
+14,White Bar,15,Item,10,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,Purified version of white dust used for artifacts
+15,Red Bar,15,Item,10,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,Purified version of red dust used for artifacts
+16,Paper,1,Item,50,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,simplest item for scroll and book crafting
+17,Scroll of Force,35,MagicItem,1,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,Scroll that blasts things with a pushing force
+18,Scroll of Ice,25,MagicItem,1,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,Scroll that ignites things with fire and melts ice
+19,Scroll of Fire,25,MagicItem,1,Assets\Art\ShopAssets\Items\TestItems\TestSphere.prefab,Scroll that freezes things in place and extingueshes flames

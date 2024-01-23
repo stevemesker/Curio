@@ -1,0 +1,31 @@
+list type,MaceratorMk1
+Recipe Name,MaceratorMk1_ScrapWood_WoodPulp_Recipe
+Input,0
+Output,4
+Output Amount,4
+Aux,0
+Recipe Name,MaceratorMk1_LivingWoodLogs_WoodPulp_Recipe
+Input,2
+Output,4
+Output Amount,4
+Aux,0
+Recipe Name,MaceratorMk1_LivingWoodBoards_WoodPulp_Recipe
+Input,3
+Output,4
+Output Amount,5
+Aux,0
+Recipe Name,MaceratorMk1_TitanTears_BlueDust_Recipe
+Input,7
+Output,10
+Output Amount,10
+Aux,0
+Recipe Name,MaceratorMk1_Moonflower_WhiteDust_Recipe
+Input,8
+Output,11
+Output Amount,10
+Aux,0
+Recipe Name,MaceratorMk1_Brightbloom_RedDust_Recipe
+Input,9
+Output,12
+Output Amount,10
+Aux,0

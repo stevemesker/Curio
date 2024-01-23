@@ -1,0 +1,16 @@
+list type,FurnaceMk1,,,
+Recipe Name,FurnaceMk1_BlueDust_BlueBar_Recipe,,,
+Input,10,,,
+Output,13,,,
+Output Amount,1,,,
+Aux,0,2,3,12
+Recipe Name,FurnaceMk1_RedDust_RedBar_Recipe,,,
+Input,12,,,
+Output,15,,,
+Output Amount,1,,,
+Aux,0,2,3,12
+Recipe Name,FurnaceMk1_WhiteDust_WhiteBar_Recipe,,,
+Input,11,,,
+Output,14,,,
+Output Amount,1,,,
+Aux,0,2,3,12
