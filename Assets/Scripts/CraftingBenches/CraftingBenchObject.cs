@@ -220,8 +220,9 @@ public class CraftingBenchObject : MonoBehaviour,iPickUp, iRotate
 
     public recipeList searchRecipe (Item input)
     {
-        recipeList list = craftingBrain.matcher(input);
-        return list;
+        return null;
+        //recipeList list = craftingBrain.matcher(input);
+        //return list;
     }
     #endregion //Spawning Items
 

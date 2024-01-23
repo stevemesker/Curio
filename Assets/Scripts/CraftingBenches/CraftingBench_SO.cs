@@ -58,22 +58,23 @@ public class CraftingBench_SO : SerializedScriptableObject
         }
     }
 
-    [Button ("Test dictionary functionality")]
-    public virtual recipeList matcher(Item indexer)
+
+    public virtual List<Recipes_SO> matcher(List<Item> indexer)
     {
         //function that returns the group of recipes possible for an item given the item index
-        
-        recipeList puller = new recipeList();
-        bool recipeExists = dictRecipeList.TryGetValue(indexer, out puller);
 
-        if (recipeExists)
+        List<Recipes_SO> tempMatcher = new List<Recipes_SO>(); // holds the list of recipes to be returned
+        recipeList puller = new recipeList(); //pulled recipe from the dictionary
+
+        for (int i = 0; i < indexer.Count; i++)
         {
-            //Debug.Log("Found recipes for " + indexer.name);
-            return puller;
+            if (dictRecipeList.TryGetValue(indexer[i], out puller))
+            {
+                tempMatcher.AddRange(puller.dictRecipeList); // Add each individual recipe to tempMatcher
+            }
         }
-        Debug.Log("Did not find recipes for " + indexer.name);
-        
-        return null;
+
+        return tempMatcher; // Return the populated list of Recipes_SO
         
     }
 
