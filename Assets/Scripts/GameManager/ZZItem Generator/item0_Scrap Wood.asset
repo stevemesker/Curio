@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Scrap Wood
   type: 0
   art: {fileID: 0}
-  id: 0
+  <id>k__BackingField: 0
   baseCost: 1
   StackSize: 20
   Notes: "Junk Item for the tutorial\r"

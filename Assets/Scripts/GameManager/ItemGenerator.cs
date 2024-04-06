@@ -27,6 +27,7 @@ public class ItemGenerator : MonoBehaviour
         string[] data = itemData.text.Split(new char[] { '\n' });
         string[] row;
 
+
         for (int i = 1; i < data.Length; i++)
         {
             Debug.Log("creating Item scriptable object " + i);

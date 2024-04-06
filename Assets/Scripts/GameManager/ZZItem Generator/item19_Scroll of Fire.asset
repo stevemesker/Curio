@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Scroll of Fire
   type: 1
   art: {fileID: 0}
-  id: 19
+  <id>k__BackingField: 19
   baseCost: 25
   StackSize: 0
   Notes: Scroll that freezes things in place and extingueshes flames

@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Limestone
   type: 0
   art: {fileID: 0}
-  id: 5
+  <id>k__BackingField: 5
   baseCost: 5
   StackSize: 10
   Notes: "Most basic stone used for construction materials\r"

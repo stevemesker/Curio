@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Moonflower
   type: 0
   art: {fileID: 0}
-  id: 8
+  <id>k__BackingField: 8
   baseCost: 7
   StackSize: 20
   Notes: "Flower that only spawns at night\r"

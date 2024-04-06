@@ -15,7 +15,7 @@ MonoBehaviour:
   name: White Bar
   type: 0
   art: {fileID: 0}
-  id: 14
+  <id>k__BackingField: 14
   baseCost: 15
   StackSize: 10
   Notes: "Purified version of white dust used for artifacts\r"

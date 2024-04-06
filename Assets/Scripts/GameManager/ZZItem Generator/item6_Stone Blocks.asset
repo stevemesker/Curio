@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Stone Blocks
   type: 0
   art: {fileID: 0}
-  id: 6
+  <id>k__BackingField: 6
   baseCost: 6
   StackSize: 20
   Notes: "Basic architectual material\r"

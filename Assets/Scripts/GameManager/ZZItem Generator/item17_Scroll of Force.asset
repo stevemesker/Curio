@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Scroll of Force
   type: 1
   art: {fileID: 0}
-  id: 17
+  <id>k__BackingField: 17
   baseCost: 35
   StackSize: 0
   Notes: "Scroll that blasts things with a pushing force\r"

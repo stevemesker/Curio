@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Blue Dust
   type: 0
   art: {fileID: 0}
-  id: 10
+  <id>k__BackingField: 10
   baseCost: 15
   StackSize: 20
   Notes: "Basic dust used in most magic recipes\r"

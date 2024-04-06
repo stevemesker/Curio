@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Titan Tears
   type: 0
   art: {fileID: 0}
-  id: 7
+  <id>k__BackingField: 7
   baseCost: 10
   StackSize: 20
   Notes: "Magical ore that is the base for almost all magical stuff\r"

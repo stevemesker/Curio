@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Red Bar
   type: 0
   art: {fileID: 0}
-  id: 15
+  <id>k__BackingField: 15
   baseCost: 15
   StackSize: 10
   Notes: "Purified version of red dust used for artifacts\r"

@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Living Wood Boards
   type: 0
   art: {fileID: 0}
-  id: 3
+  <id>k__BackingField: 3
   baseCost: 6
   StackSize: 10
   Notes: "Basic wood planks made from living wood logs\r"

@@ -3,7 +3,9 @@ guid: 068a554955687a745adc35d4658a1d7a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - masterList: {fileID: 11400000, guid: 7491d6a5ee1f1a145995e828b66d594c, type: 2}
+  - recipeData: {fileID: 4900000, guid: 4c13615955202144a9b0251339df6ddc, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Brightbloom
   type: 0
   art: {fileID: 0}
-  id: 9
+  <id>k__BackingField: 9
   baseCost: 7
   StackSize: 20
   Notes: "Flower that only spawns in the day\r"

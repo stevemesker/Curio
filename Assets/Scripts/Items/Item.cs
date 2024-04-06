@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "New_Item", menuName = "Item/Item")]
@@ -17,10 +18,10 @@ public class Item : ScriptableObject
     [Tooltip("Art asset instanced when item is spawned with the item")]
     public GameObject art; //reference to the art
 
-    [Min(0), Tooltip("Unique object ID for spawning and parcing recipes")]
-    public int id; //item's ID for spawning and crafting
+    [field: SerializeField, Tooltip("Unique object ID for spawning and parcing recipes")]
+    public int id{ get; set; } //item's ID for spawning and crafting
 
-    [Min(0), Tooltip("Starting cost for all items. Modified by other external things")]
+[Min(0), Tooltip("Starting cost for all items. Modified by other external things")]
     public int baseCost; //the base cost for the item without modifiers
 
     [Min(0), Tooltip("Max number of this item that can be stacked into a pile")]

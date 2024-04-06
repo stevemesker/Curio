@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Scroll of Ice
   type: 1
   art: {fileID: 0}
-  id: 18
+  <id>k__BackingField: 18
   baseCost: 25
   StackSize: 0
   Notes: "Scroll that ignites things with fire and melts ice\r"

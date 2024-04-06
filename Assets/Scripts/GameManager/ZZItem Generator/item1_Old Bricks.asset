@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Old Bricks
   type: 0
   art: {fileID: 0}
-  id: 1
+  <id>k__BackingField: 1
   baseCost: 1
   StackSize: 10
   Notes: "Junk Item for the tutorial\r"

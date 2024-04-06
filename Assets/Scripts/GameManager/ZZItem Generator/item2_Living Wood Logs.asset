@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Living Wood Logs
   type: 0
   art: {fileID: 0}
-  id: 2
+  <id>k__BackingField: 2
   baseCost: 5
   StackSize: 4
   Notes: "Basic logs for the first area\r"

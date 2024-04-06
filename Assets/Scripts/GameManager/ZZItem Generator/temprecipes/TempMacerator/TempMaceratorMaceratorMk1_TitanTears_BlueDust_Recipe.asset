@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f5a2f72826dd8b4ba0f6edf510fcdad, type: 3}
-  m_Name: MaceratorMk1_LivingWoodLogs_WoodPulp_Recipe
+  m_Name: TempMaceratorMaceratorMk1_TitanTears_BlueDust_Recipe
   m_EditorClassIdentifier: 
   ItemSOInput:
-  - {fileID: 11400000, guid: d75367787c1f77140a0760e48280a6b7, type: 2}
+  - {fileID: 11400000, guid: ad0dcec27af0a4a43b9ce3531e16d4b7, type: 2}
   ItemSOOutput:
-  - {fileID: 11400000, guid: a77d286e13ee11842b87a29fb1010ac6, type: 2}
-  outputAmount: 04000000
+  - {fileID: 11400000, guid: 58985c2a185dbdf45a4405a4519efa78, type: 2}
+  outputAmount: 0a000000
   ItemAux:
   - {fileID: 11400000, guid: b5a52b6f7b818c547aa419e1ac445219, type: 2}

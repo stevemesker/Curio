@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Wood Pulp
   type: 0
   art: {fileID: 0}
-  id: 4
+  <id>k__BackingField: 4
   baseCost: 1
   StackSize: 20
   Notes: "Most basic material for making simple paper\r"

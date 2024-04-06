@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f5a2f72826dd8b4ba0f6edf510fcdad, type: 3}
-  m_Name: MaceratorMk1_LivingWoodBoards_WoodPulp_Recipe
+  m_Name: TempMaceratorMaceratorMk1_LivingWoodBoards_WoodPulp_Recipe
   m_EditorClassIdentifier: 
   ItemSOInput:
   - {fileID: 11400000, guid: 8e2162d474fdda0438fe70fb7ef9c68a, type: 2}

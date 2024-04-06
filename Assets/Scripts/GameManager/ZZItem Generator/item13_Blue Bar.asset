@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Blue Bar
   type: 0
   art: {fileID: 0}
-  id: 13
+  <id>k__BackingField: 13
   baseCost: 20
   StackSize: 10
   Notes: "Purified version of blue dust used for artifacts\r"

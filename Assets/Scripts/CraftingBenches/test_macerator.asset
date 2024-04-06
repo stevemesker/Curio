@@ -15,7 +15,19 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: a0e52d7edddd1d747918df72b1f86243, type: 2}
+    - {fileID: 11400000, guid: 3dcc92b14b96fd44b9c238925afc5219, type: 2}
+    - {fileID: 11400000, guid: 8e2162d474fdda0438fe70fb7ef9c68a, type: 2}
+    - {fileID: 11400000, guid: 69cd428017c4c754cb3230023b9174f1, type: 2}
+    - {fileID: 11400000, guid: d75367787c1f77140a0760e48280a6b7, type: 2}
+    - {fileID: 11400000, guid: b6ca4c1cff4badd4c81bc2fa78142537, type: 2}
+    - {fileID: 11400000, guid: 4e220d903f2c6ce48b92d916150d2e8f, type: 2}
+    - {fileID: 11400000, guid: d9ae324e2c86fd44e8f531ad85e10a60, type: 2}
+    - {fileID: 11400000, guid: b5a52b6f7b818c547aa419e1ac445219, type: 2}
+    - {fileID: 11400000, guid: c984dd6427ffa244c9a2752e9c016278, type: 2}
+    - {fileID: 11400000, guid: ad0dcec27af0a4a43b9ce3531e16d4b7, type: 2}
+    - {fileID: 11400000, guid: 6ef24b8500776c441b13c8a1aaaa9ad9, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -34,18 +46,193 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
+      Data: 6
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
       Data: 0
+    - Name: $v
+      Entry: 7
+      Data: 2|recipeList, Assembly-CSharp
+    - Name: dictRecipeList
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[Recipes_SO, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 1
     - Name: 
       Entry: 13
       Data: 
     - Name: 
       Entry: 8
       Data: 
-  recipes:
-  - {fileID: 11400000, guid: 2e6cab59ae70cfc4ba76703b15ef8d76, type: 2}
-  - {fileID: 11400000, guid: 3cba94e156f428e4fb644e33d26d2e2e, type: 2}
-  - {fileID: 11400000, guid: fcec95d48c7921e42b3e978aeb72e48f, type: 2}
-  - {fileID: 11400000, guid: 25b62c832f44b7f488e3710681ab4ed9, type: 2}
-  - {fileID: 11400000, guid: aa100e94ba5313e44ae2cd7a225e40f6, type: 2}
-  - {fileID: 11400000, guid: 0203860963b6e804babeca82597805c5, type: 2}
-  - {fileID: 11400000, guid: 17c45c6a13cc6fa429e519b7cb1633b6, type: 2}
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: 4|recipeList, Assembly-CSharp
+    - Name: dictRecipeList
+      Entry: 7
+      Data: 5|System.Collections.Generic.List`1[[Recipes_SO, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 4
+    - Name: $v
+      Entry: 7
+      Data: 6|recipeList, Assembly-CSharp
+    - Name: dictRecipeList
+      Entry: 7
+      Data: 7|System.Collections.Generic.List`1[[Recipes_SO, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 6
+    - Name: $v
+      Entry: 7
+      Data: 8|recipeList, Assembly-CSharp
+    - Name: dictRecipeList
+      Entry: 7
+      Data: 9|System.Collections.Generic.List`1[[Recipes_SO, Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 7
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 8
+    - Name: $v
+      Entry: 7
+      Data: 10|recipeList, Assembly-CSharp
+    - Name: dictRecipeList
+      Entry: 7
+      Data: 11|System.Collections.Generic.List`1[[Recipes_SO, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 9
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 10
+    - Name: $v
+      Entry: 7
+      Data: 12|recipeList, Assembly-CSharp
+    - Name: dictRecipeList
+      Entry: 7
+      Data: 13|System.Collections.Generic.List`1[[Recipes_SO, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 11
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  recipes: []

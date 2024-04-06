@@ -14,6 +14,7 @@ public class CraftingBenchObject : MonoBehaviour,iPickUp, iRotate
     public List<GameObject> CraftingVolumes; //primary list for crafting
     public List<GameObject> AuxVolumes; //primary list for aux inputs
     public bool destroyOnInput; //some items are destroyed 
+
     public List<Vector3> PrimaryLocators; //used for placing crafting bench in shop
     public List<Vector3> PerimeterLocators; //used for placing crafting bench in shop
 
@@ -23,24 +24,54 @@ public class CraftingBenchObject : MonoBehaviour,iPickUp, iRotate
     private List<Item> heldCraft; //used to remember what was previously crafted to make crafting more efficinet
     private float rotator; //used to hold value of what rotation the crafting bench should be placed with
 
+    public List<Item> inventory = new List<Item>(); //total inventory of held items gained from the crafting volumes
+    private List<Item> adjInputItem = new List<Item>(); //combines similar items to prevent pulling duplicate lists
     //public List<Vector2> volumePlacers; //used to decide if crafting bench can be placed
+
 
     #region Crafting
     [Button ("test full crafting")]
     public void Craft()
     {
         //method that attempts to convert held inventory into crafted items
-
-        List <recipeList> tempRecipes = new List <recipeList>();//stores all the recipes found in the dictionary
-        List<recipeUnpacked> adjRecipes;//stores the unpacked list of possible recipes from the dictionary
+        List<Recipes_SO> InputItems = new List<Recipes_SO>();
         
-        List<Item> inventory = new List<Item>(); //total inventory of held items gained from the crafting volumes
-        List<Item> adjInputItem = new List<Item>(); //combines similar items to prevent pulling duplicate lists
 
-        inventory = getInventory(CraftingVolumes);
-        if (inventory.Count == 0) return;
-        adjInputItem = InputSorter(inventory);
+        inventory = getInventory(CraftingVolumes, adjInputItem);
+        Debug.LogWarning(adjInputItem.Count);
+        if (inventory.Count == 0) return; //make sure it actually has an inventory
 
+        //adjInputItem = inventory.Distinct;
+        //adjInputItem = InputSorter(inventory);
+
+        InputItems = craftingBrain.matcher(adjInputItem);
+
+        //this has problems, it's trying to instance a scriptabler object which is not what we want
+        Recipes_SO Spawn = new Recipes_SO();
+
+        Spawn = SpawningItem(InputItems);
+        if (Spawn == null) return;
+
+        Debug.Log("Now spawning " + Spawn);
+
+        consumeRecipe(Spawn.ItemSOInput);
+        //addItem(Spawn.ItemSOOutput);
+
+        //consumeRecipe(Spawn.inputRecipe);
+        //addItem(Spawn.outputRecipe);
+
+
+        //List <recipeList> tempRecipes = new List <recipeList>();//stores all the recipes found in the dictionary
+        //List<recipeUnpacked> adjRecipes;//stores the unpacked list of possible recipes from the dictionary
+
+        //List<Item> inventory = new List<Item>(); //total inventory of held items gained from the crafting volumes
+        //List<Item> adjInputItem = new List<Item>(); //combines similar items to prevent pulling duplicate lists
+
+        //inventory = getInventory(CraftingVolumes);
+        //if (inventory.Count == 0) return;
+        //adjInputItem = InputSorter(inventory);
+
+        /*
         for (int i = 0; i < adjInputItem.Count; i++)
         {
             recipeList temp = searchRecipe(adjInputItem[i]);
@@ -57,45 +88,46 @@ public class CraftingBenchObject : MonoBehaviour,iPickUp, iRotate
 
         consumeRecipe(Spawn.inputRecipe);
         addItem(Spawn.outputRecipe);
+        */
     }
 
 
-    recipeUnpacked SpawningItem(List<recipeUnpacked> inputRecipes, List<Item> inventory)
+    Recipes_SO SpawningItem(List<Recipes_SO> inputRecipes)
     {
         //takes the list of items "inventory" and sorts through list of recipes to find the correct output (if any) to spawn
-        recipeUnpacked recipeBestFit = new recipeUnpacked(); //used to hold current contender for most probable recipe
-        int failcount = 0;
-        for (int recipeFocus = 0; recipeFocus < inputRecipes.Count; recipeFocus++) //go through each recipe
+        
+        Recipes_SO recipeBestFit = new Recipes_SO(); //used to hold current contender for most probable recipe
+
+        for (int i = 0; i < inputRecipes.Count; i++)
         {
-            List<Item> InvCopy = new List<Item>(inventory);
-            List<Item> rCopy = new List<Item>(inputRecipes[recipeFocus].inputRecipe);
-            for (int i = 0; i < InvCopy.Count; i++) //go through each inventory item
+            List<Item> tempInv = new List<Item>(inventory); //will hold what will be consumed in the inventory and sets the variable Inventory to that
+            List<Item> crafter = new List<Item>(); //items to be crafted
+
+            for (int j = 0; j < inputRecipes[i].ItemSOInput.Count; j++)
             {
-                for (int j = 0; j < rCopy.Count; j++) //go through each recipe input item
+                if (tempInv.Contains(inputRecipes[i].ItemSOInput[j]))
                 {
-                    if (InvCopy[i] == rCopy[j])
-                    {
-                        //Debug.Log("Found a match with " + InvCopy[i].name + " and " + rCopy[j] + "in recipe #" + recipeFocus);
-                        InvCopy.RemoveAt(i);
-                        rCopy.RemoveAt(j);
-                        j = rCopy.Count;
-                        i--;
-                    }
+                    crafter.Add(inputRecipes[i].ItemSOInput[j]);
+                    tempInv.Remove(inputRecipes[i].ItemSOInput[j]);
+                }
+                else
+                {
+                    j = inputRecipes[i].ItemSOInput.Count;
+                    crafter = null;
                 }
             }
-            if (InvCopy.Count + rCopy.Count == 0)
+
+            if (crafter != null)
             {
-                Debug.LogWarning("Found a perfect match for recipe #" + recipeFocus);
-                return inputRecipes[recipeFocus];
+                inventory = new List<Item>();
+                return inputRecipes[i];
             }
-            else if (rCopy.Count == 0)
-            {
-                recipeBestFit = inputRecipes[recipeFocus];
-            }
-            else failcount+= 1;
         }
-        if (failcount == inputRecipes.Count) return null; //no valid recipes were found
-        return recipeBestFit;
+
+
+        Debug.Log("No recipes found for input items");
+        return null;
+        
     }
     
     void addItem(List<Item> input)
@@ -127,50 +159,27 @@ public class CraftingBenchObject : MonoBehaviour,iPickUp, iRotate
         return tempItem;
     }
 
-    recipeUnpacked unpackRecipes(Recipes_SO input)
-    {
-        recipeUnpacked temp = new recipeUnpacked();
-        temp.inputRecipe = input.ItemSOInput;
-        temp.outputRecipe = input.ItemSOOutput;
-        return temp;
-    }
-
-    List<Item> getInventory(List<GameObject> inv)
+    List<Item> getInventory(List<GameObject> inv, List<Item> uniqueSet)
     {
         List<Item> temp = new List<Item>();
+        CraftingVolume vol = new CraftingVolume();
         for (int i = 0; i < inv.Count; i++)
         {
-            if (CraftingVolumes[i].GetComponent<CraftingVolume>().inputLocator.transform.childCount > 0)
+            vol = CraftingVolumes[i].GetComponent<CraftingVolume>();
+            if (vol.inputLocator.transform.childCount > 0)
             {
-                temp.Add(CraftingVolumes[i].GetComponent<CraftingVolume>().getItemInv());
+                temp.Add(vol.getItemInv());
+                if (!uniqueSet.Contains(vol.getItemInv())) uniqueSet.Add(vol.getItemInv());
             }
         }
         return temp;
-    }
-
-    List<recipeUnpacked> recipeUnpack(List<recipeList> input)
-    {
-        //method that takes imported dictionary recipe lists and unpacks them into individual recipes
-        if (input.Count == 0) return null;
-
-        List<recipeUnpacked> tempList = new List<recipeUnpacked>();
-
-        for (int i = 0; i < input.Count; i++)
-        {
-            for (int j = 0; j < input[i].dictRecipeList.Count; j++)
-            {
-                tempList.Add(unpackRecipes(input[i].dictRecipeList[j]));
-            }
-        }
-        //Debug.Log("Unpacked " + tempList.Count + " recipes...");
-
-        //return null;
-        return tempList;
     }
 
     void consumeRecipe(List<Item> input)
     {
         //finds items within crafting volumes and removes their contents based on the recipe input
+
+        /*
         for (int i = 0; i < input.Count; i++)
         {
             for (int j = 0; j < CraftingVolumes.Count; j++)
@@ -183,6 +192,7 @@ public class CraftingBenchObject : MonoBehaviour,iPickUp, iRotate
                 }
             }
         }
+        */
     }
 
     public bool dispenseItem (GameObject input)
@@ -218,12 +228,6 @@ public class CraftingBenchObject : MonoBehaviour,iPickUp, iRotate
         }
     }
 
-    public recipeList searchRecipe (Item input)
-    {
-        return null;
-        //recipeList list = craftingBrain.matcher(input);
-        //return list;
-    }
     #endregion //Spawning Items
 
     #region Interaction
@@ -329,10 +333,4 @@ public class CraftingBenchObject : MonoBehaviour,iPickUp, iRotate
     #endregion
 
 
-}
-
-public class recipeUnpacked
-{
-    public List<Item> inputRecipe;
-    public List<Item> outputRecipe;
 }

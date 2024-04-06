@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Paper
   type: 0
   art: {fileID: 0}
-  id: 16
+  <id>k__BackingField: 16
   baseCost: 1
   StackSize: 50
   Notes: "simplest item for scroll and book crafting\r"

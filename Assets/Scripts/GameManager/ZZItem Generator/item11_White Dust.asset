@@ -15,7 +15,7 @@ MonoBehaviour:
   name: White Dust
   type: 0
   art: {fileID: 0}
-  id: 11
+  <id>k__BackingField: 11
   baseCost: 10
   StackSize: 20
   Notes: "dust used as a component for ice magic\r"
