@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Sirenix.OdinInspector;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,6 +20,12 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField, Range(0f, 100f)]
     float Speed = 10f;
+
+    [SerializeField, Range(0f, 100f)]
+    float acceleration = 20f;
+
+    [SerializeField, Range(0f, 100f)]
+    float deceleration = 20f;
 
     [SerializeField, Range(0f, 25f)]
     float lookSpeed = 10f;
@@ -40,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInput pInput;
     [SerializeField] private Vector2 lStickInput;
 
-    private Vector3 moveVector; //handles the direction the player should move
+    [SerializeField] private Vector3 moveVector; //handles the direction the player should move
     [SerializeField] Vector3 lookVector; //handles the direction the player should be looking at
     [SerializeField] float stickDistance; //holds how far the player has pushed the sticks
 
@@ -55,6 +62,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] RaycastHit interactRay; //used for picking up objects and interacting
     [SerializeField] public GameObject targeter; //used for showing target location to player
 
+    //--
+
+    /////////////////////////////////////////////////
+    [Header("Debug Variables")]
+    /////////////////////////////////////////////////
+    //--
+    [SerializeField] private bool OnDebugLines; //toggle for movement debug lines
+    [SerializeField, Range(0f, 5f)] float debugLineLength;
     //--
 
     //private variables
@@ -108,8 +123,81 @@ public class PlayerMovement : MonoBehaviour
     #region Movement
     //MOVEMENT CODE
 
-    private void Update()
+    private void FixedUpdate()
     {
+        if (OnDebugLines) drawlines(); //debud Delete Later
+        print(isFalling());
+        
+        stickDistance = Vector2.Distance(Vector2.zero, lStickInput); //grab 2d vector of the sticks/keyboard
+
+        //turning//
+        moveVector = facingDirection(); //finds forward relative to camera angle
+        lookVector = new Vector3(moveVector.x, 0f, moveVector.z); //find the direction the character will be facing
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookVector), Time.fixedDeltaTime * lookSpeed*stickDistance); //lerps the player rotation to the desired rotation
+        //turning//
+
+        //velocity and displacement//
+        Vector3 currentVelocity = rb.velocity; //get current velocity to allow gravity
+        Vector3 displacement; //used for uneven surfaces
+        //velocity and displacement//
+
+        if (stickDistance >= lookSensitivity)
+        {
+            Vector3 targetHorizontal;
+            if (OnSlope())
+            {
+                displacement = GetSlopeMoveDirection().normalized;
+                targetHorizontal = displacement * Speed;
+                rb.velocity = targetHorizontal;
+            }
+            else
+            {
+                targetHorizontal = moveVector.normalized * Speed;
+
+                // Extract current horizontal velocity
+                Vector3 currentHorizontal = new Vector3(currentVelocity.x, 0f, currentVelocity.z);
+
+                // Blend toward target based on acceleration
+                Vector3 newHorizontal = Vector3.MoveTowards(currentHorizontal, targetHorizontal, acceleration * Time.fixedDeltaTime);
+
+                // Combine with preserved vertical (Y) velocity
+                rb.velocity = new Vector3(newHorizontal.x, currentVelocity.y, newHorizontal.z);
+            }
+
+            /*
+            // Forward-only slope-aware movement
+            displacement = OnSlope() ? GetSlopeMoveDirection().normalized : moveVector.normalized;
+
+            // Compute target horizontal velocity (XZ only)
+            Vector3 targetHorizontal = displacement * Speed;
+
+            // Extract current horizontal velocity
+            Vector3 currentHorizontal = new Vector3(currentVelocity.x, 0f, currentVelocity.z);
+
+            // Blend toward target based on acceleration
+            Vector3 newHorizontal = Vector3.MoveTowards(
+                currentHorizontal,
+                targetHorizontal,
+                acceleration * Time.fixedDeltaTime
+            );
+
+            // Combine with preserved vertical (Y) velocity
+            rb.velocity = new Vector3(newHorizontal.x, currentVelocity.y, newHorizontal.z);
+            */
+        }
+
+        else
+        {
+            print("stopping");
+            Vector3 currentHorizontal = new Vector3(currentVelocity.x, 0f, currentVelocity.z);
+            Vector3 newHorizontal = Vector3.MoveTowards(currentHorizontal, Vector3.zero, deceleration * Time.fixedDeltaTime);
+
+            rb.velocity = new Vector3(newHorizontal.x, currentVelocity.y, newHorizontal.z);
+            
+        }
+        
+        if (OnDebugLines) drawlines();
+        /*
         if (lStickInput != Vector2.zero)
         {
             stickDistance = Vector2.Distance(Vector2.zero, lStickInput); //grab 2d vector of the sticks/keyboard
@@ -156,10 +244,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     
                     UpdatePlacer(placerTargetLocation);
-                    /*if (Player.player.HeldObject[0].GetComponent<iPickUp>().multiplace(placerTargetLocation) == true)
-                    {
-                        lockPlacer = true;
-                    }*/
+                    
                 }
                 else
                 {
@@ -178,7 +263,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        
+        */
     }
 
     public Vector3 facingDirection()
@@ -202,6 +287,16 @@ public class PlayerMovement : MonoBehaviour
         }
 
         return false;
+    }
+
+    private bool isFalling()
+    {
+        if (Physics.Raycast(transform.position + new Vector3(0f, .5f, 0f), Vector3.down, out slopeHit))
+        {
+            if (Vector3.Distance(slopeHit.point, transform.position) < .6f) return false;
+            else return true;
+        }
+        return true;
     }
     private Vector3 GetSlopeMoveDirection()
     {
@@ -419,6 +514,17 @@ public class PlayerMovement : MonoBehaviour
     {
         RotateObject(-1);
     }
+
+    #endregion
+
+    #region Debug
+
+    void drawlines()
+    {
+        Debug.DrawLine(transform.position, transform.position + transform.forward * debugLineLength, Color.green);
+        Debug.DrawLine(transform.position, transform.position + GetSlopeMoveDirection() * debugLineLength, Color.blue);
+    }
+
 
     #endregion
 }
