@@ -126,7 +126,6 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (OnDebugLines) drawlines(); //debud Delete Later
-        print(isFalling());
         
         stickDistance = Vector2.Distance(Vector2.zero, lStickInput); //grab 2d vector of the sticks/keyboard
 
@@ -134,7 +133,33 @@ public class PlayerMovement : MonoBehaviour
         moveVector = facingDirection(); //finds forward relative to camera angle
         lookVector = new Vector3(moveVector.x, 0f, moveVector.z); //find the direction the character will be facing
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookVector), Time.fixedDeltaTime * lookSpeed*stickDistance); //lerps the player rotation to the desired rotation
-        //turning//
+                                                                                                                                                       //turning//
+
+        //update targeting
+        Vector3 tempPlacer = Player.player.FindSnapPoint();
+        if (placerTargetLocation != tempPlacer && Player.player.shop != null && Player.player.HeldObject.Count > 0)
+        {
+            placerTargetLocation = tempPlacer;
+            if (lockPlacer == false)
+            {
+
+                UpdatePlacer(placerTargetLocation);
+
+            }
+            else
+            {
+                print("Placer is currently locked at " + Player.player.shop.transform.InverseTransformPoint(targeter.transform.position) + " | extending out to " + placerTargetLocation);
+                //need to update the wall stuff here
+                Player.player.HeldObject[0].GetComponent<WallCarryObject>().UpdateWallLength(Player.player.shop.transform.InverseTransformPoint(targeter.transform.position), placerTargetLocation);
+                UpdatePlacer(Player.player.shop.transform.InverseTransformPoint(targeter.transform.position));
+            }
+
+        }
+        //placerTargetLocation = Player.player.FindSnapPoint();
+
+        //Debug.DrawLine(transform.position, moveVector + GetSlopeMoveDirection().normalized + transform.position, Color.blue);
+        //Debug.DrawLine(transform.position, GetSlopeMoveDirection().normalized + transform.position, Color.green);
+        //Debug.DrawLine(transform.position + transform.forward * grabDistance + transform.up, transform.position + transform.up * -1 + transform.forward, Color.yellow);
 
         //velocity and displacement//
         Vector3 currentVelocity = rb.velocity; //get current velocity to allow gravity
@@ -184,6 +209,8 @@ public class PlayerMovement : MonoBehaviour
             // Combine with preserved vertical (Y) velocity
             rb.velocity = new Vector3(newHorizontal.x, currentVelocity.y, newHorizontal.z);
             */
+
+            
         }
 
         else
